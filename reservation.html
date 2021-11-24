@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script src="js/jquery-1.6.2.min.js" type="text/javascript"></script> 
+	<script src="js/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
+ 	<title>UVA Practice Room Reservation</title>
+	<script>
+	$(document).ready(function() {
+		$( "#roomFilter" ).change(function() {
+            var formData = {
+                size: $( "input[name='size']:checked" ).val(),
+                type: $( "input[name='type']:checked" ).val()
+            };
+            console.log(formData.size, formData.type);
+			$.ajax({
+				url: 'filter.php', 
+				data: {searchUAform: $( "input[name='size']:checked" ).val()},
+				success: function(data){
+					$('#searchUAresult').html(data);	
+				
+				}
+			});
+		});
+		
+	});
+	</script>
+</head>
+<body>
+		
+    <form action="filter.php" method="get" id="roomFilter"> 
+        <h3>Room Size</h3>
+	    <input id="small" type="radio" value="Small" name="size"/>
+        <label for="small">Small</label><br>
+	    <input id="large" type="radio" value="Large" name="size"/>
+        <label for="large">Large</label><br>
+
+        <br>
+        <h3>Room Type</h3>
+        <input id="grand" type="radio" value="grand" name="type"/>
+        <label for="grand">Grand Piano</label><br>
+        <input id="upright" type="radio" value="upright" name="type"/>
+        <label for="upright">Upright Piano</label><br>
+        <input id="Digital" type="radio" value="digital" name="type"/>
+        <label for="Digital">Digital Piano</label><br>
+        <input id="Harp" type="radio" value="harp" name="type"/>
+        <label for="Harp">Harp</label><br>
+    </form>
+
+	<div id="searchUAresult">User Agent Search Result</div>
+
+	<br/><br/>
+	index.html - View the source here to see the HTML. Notice the "jquery" scripts at the top of the file!<br/>
+	js.zip - <a href="./js.zip">js folder</a> (Download jQuery!)
+
+</body>
+</html>
