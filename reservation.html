@@ -30,9 +30,9 @@
 		
     <form action="filter.php" method="get" id="roomFilter"> 
         <h3>Room Size</h3>
-	    <input id="small" type="radio" value="Small" name="size"/>
+	    <input id="small" type="radio" value="small" name="size"/>
         <label for="small">Small</label><br>
-	    <input id="large" type="radio" value="Large" name="size"/>
+	    <input id="large" type="radio" value="large" name="size"/>
         <label for="large">Large</label><br>
 
         <br>
@@ -41,17 +41,14 @@
         <label for="grand">Grand Piano</label><br>
         <input id="upright" type="radio" value="upright" name="type"/>
         <label for="upright">Upright Piano</label><br>
-        <input id="Digital" type="radio" value="digital" name="type"/>
+        <input id="Digital" type="radio" value="digital grand" name="type"/>
         <label for="Digital">Digital Piano</label><br>
         <input id="Harp" type="radio" value="harp" name="type"/>
         <label for="Harp">Harp</label><br>
     </form>
-
-	<div id="availRooms">Rooms</div>
+    <h1>Rooms</h1>
+	<p id="availRooms"></p>
 
 	<br/><br/>
-	index.html - View the source here to see the HTML. Notice the "jquery" scripts at the top of the file!<br/>
-	js.zip - <a href="./js.zip">js folder</a> (Download jQuery!)
-
 </body>
 </html>
