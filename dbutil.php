@@ -1,10 +1,6 @@
 <?php
 
 class DbUtil{
-	public static $loginUser = "dz8pa"; 
-   public static $loginPass = "carryiousgeorge1";
-   public static $host = "mysql01.cs.virginia.edu"; // local host
-   public static $schema = "dz8pa_roomreservation"; // DB Schema
 	
 	public static function loginConnection(){
       $loginUser = "dz8pa"; 
@@ -18,7 +14,7 @@ class DbUtil{
          $db = new PDO($dsn, $loginUser, $loginPass);
          
          // dispaly a message to let us know that we are connected to the database 
-         echo "<p>You are connected to the database --- Yay!!</p>";
+         // echo "<p>You are connected to the database --- Yay!!</p>";
       }
       catch (PDOException $e)     // handle a PDO exception (errors thrown by the PDO library)
       {
