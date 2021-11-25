@@ -1,0 +1,52 @@
+body {
+    margin: 50px;
+  }
+  .jumbotron {
+    background: #fff;
+    padding: 2rem 1rem;
+  }
+  .fa {
+    font-size: 0.5em;
+  }
+  table {
+    width: 100%;
+  }
+  th {
+    text-align: center;
+  }
+  td {
+    width: 11rem;
+    height: 8rem;
+    text-align: center;
+    line-height: 100px !important;
+    font-size: 1.5em;
+  }
+  td,
+  #year {
+    font-family: monospace;
+  }
+  .day.hover {
+    background: #ffc791;
+    cursor: pointer;
+  }
+  .day button {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+  #month-changer {
+    width: 50rem;
+    display: inline-block;
+  }
+  #about {
+    font-size: 5em !important;
+    position: absolute;
+    top: -35px;
+    right: 15px;
+  }
+  #main {
+    margin-left: 2rem;
+    width: 55%;
+  }
+  
