@@ -10,14 +10,14 @@
 		$( "#roomFilter" ).change(function() {
             var formData = {
                 size: $( "input[name='size']:checked" ).val(),
-                type: $( "input[name='type']:checked" ).val()
+                type: $( "input[name='type']:checked" ).val(),
             };
             console.log(formData.size, formData.type);
 			$.ajax({
 				url: 'filter.php', 
-				data: {searchUAform: $( "input[name='size']:checked" ).val()},
+				data: formData,
 				success: function(data){
-					$('#searchUAresult').html(data);	
+					$('#availRooms').html(data);	
 				
 				}
 			});
@@ -47,7 +47,7 @@
         <label for="Harp">Harp</label><br>
     </form>
 
-	<div id="searchUAresult">User Agent Search Result</div>
+	<div id="availRooms">Rooms</div>
 
 	<br/><br/>
 	index.html - View the source here to see the HTML. Notice the "jquery" scripts at the top of the file!<br/>
