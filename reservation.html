@@ -16,6 +16,8 @@
             var formData = {
                 size: $( "input[name='size']:checked" ).val(),
                 type: $( "input[name='type']:checked" ).val(),
+                date: $( "input[name='date']:checked" ).val(),
+
             };
             console.log(formData.size, formData.type);
 			$.ajax({
@@ -32,7 +34,9 @@
 	</script>
 </head>
 <body>
-    <div class="container" id="main">
+    <form action="filter.php" method="get" id="roomFilter"> 
+        <div class="row">
+    <div class="col-7" id="main">
         <div class="jumbotron">
             <h1 class="text-center">
                 <a id="left">
@@ -57,14 +61,13 @@
             </div>
         </div>
     </div>
-
-    <form action="filter.php" method="get" id="roomFilter"> 
+    <div class="col-3" id="filters">
         <h3>Room Size</h3>
 	    <input id="small" type="radio" value="small" name="size"/>
         <label for="small">Small</label><br>
 	    <input id="large" type="radio" value="large" name="size"/>
         <label for="large">Large</label><br>
-	    <input id="nosize" type="radio" value="nopref" name="size"/>
+	    <input id="nosize" type="radio" value="nopref" name="size" checked="checked" />
         <label for="nosize">No Preference</label><br>
 
         <br>
@@ -77,8 +80,10 @@
         <label for="Digital">Digital Piano</label><br>
         <input id="Harp" type="radio" value="harp" name="type"/>
         <label for="Harp">Harp</label><br>
-        <input id="notype" type="radio" value="nopref" name="type"/>
+        <input id="notype" type="radio" value="nopref" name="type" checked="checked" />
         <label for="notype">No Preference</label><br>
+    </div>
+</div>
     </form>
     <h1>Rooms</h1>
 	<p id="availRooms"></p>
