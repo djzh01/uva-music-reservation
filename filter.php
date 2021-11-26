@@ -63,27 +63,7 @@
 		foreach ($time_slots as $time) {
 			echo "<li><label class=\"btn btn-outline-success\" for=\"time{$room}{$time}\"><input id=\"time{$room}{$time}\" type=\"radio\" class=\"btn-check\" value=\"{$time}\" name=\"times\">{$time}</label></li>";
 		}
-<<<<<<< HEAD
 		echo "</ul>";
-=======
-	// 	// if (empty($_GET['name'])) {
-    //     //     $errors['name'] = '';
-    //     // }
-        
-    //     // if (empty($_POST['email'])) {
-    //     //     $errors['email'] = 'Email is required.';
-    //     // }
-        // $searchString = '%' . $_GET['size'] . '%';
-	// 	$stmt->bind_param("s", $searchString);
-	// 	$stmt->execute();
-	// 	$stmt->bind_result($ip, $user, $datetime);
-	// 	echo "<table border=1><th>IP</th><th>User Agent</th><th>Date of Access</th>\n";
-	// 	while($stmt->fetch()) {
-	// 		echo "<tr><td>$ip</td><td>$user</td><td>$datetime</td></tr>";
-	// 	}
-	// 	echo "</table>";
-	
->>>>>>> um idk
 	}
 	// print_r($times);
 
