@@ -34,7 +34,7 @@ $(function() {
             cal[i].push('<td>&nbsp;</td>');
           } else {
             dayid = d.getFullYear() + '-' + (d.getMonth()+1) + '-' + day;
-            cal[i].push('<td class="day"><input type="radio" name="date" value="' + dayid + '" id="day' + day +'"/><label for="day' + day + '">' + day++ + '</label></td>');
+            cal[i].push('<td class="day"><label for="day' + day + '"><input type="radio" name="date" value="' + dayid + '" id="day' + day +'"/>' + day++ + '</label></td>');
           }
         }
       }
