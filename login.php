@@ -5,7 +5,7 @@
 	$db = DbUtil::loginConnection();
 
     $con = new mysqli('mysql01.cs.virginia.edu', 'dz8pa', 'carryiousgeorge1', 'dz8pa_roomreservation');
-    $sql="INSERT INTO User (computing_id, first_name, last_name, role)
+    $sql="INSERT IGNORE INTO User (computing_id, first_name, last_name, role)
     VALUES
     ('$_POST[computingid]','$_POST[firstname]','$_POST[lastname]','$_POST[role]')";
 
