@@ -3,6 +3,7 @@
 	$db = DbUtil::loginConnection();
 	
 	$stmt = $db->prepare("select room_id from Room where size = ? and type = ?");
+	echo $_GET['date'];
 	if($_GET['size'] == 'nopref' && $_GET['type'] != 'nopref'){
 		$stmt = $db->prepare("select room_id from Room where size like ? and type = ?");
 		$_GET['size'] = '%';
