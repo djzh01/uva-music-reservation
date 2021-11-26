@@ -33,7 +33,8 @@ $(function() {
           if (i === 1 && j < start) {
             cal[i].push('<td>&nbsp;</td>');
           } else {
-            cal[i].push('<td class="day"><button type="button">' + day++ + '</button></td>');
+            dayid = d.getFullYear() + '-' + (d.getMonth()+1) + '-' + day;
+            cal[i].push('<td class="day"><input type="radio" name="date" value="' + dayid + '" id="day' + day +'"/><label for="day' + day + '">' + day++ + '</label></td>');
           }
         }
       }
