@@ -3,11 +3,11 @@
     session_start();
     echo $_SESSION['id'];
     echo "\n";
-    echo $_SESSION['fname'];
+    //echo $_SESSION['fname'];
     echo "\n";
-    echo $_SESSION['lname'];
+    //echo $_SESSION['lname'];
     echo "\n";
-    echo $_SESSION['role'];
+    //echo $_SESSION['role'];
 
   ?>
 
