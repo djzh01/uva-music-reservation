@@ -27,27 +27,45 @@
 	
 	$stmt->bindValue(':date', $_GET['date'], PDO::PARAM_STR);
 
-	echo "SELECT room_id, start_time 
-	FROM Reservation_times NATURAL JOIN Room
-	WHERE weekday = '" . isWeekday($_GET['date']) . "' 
-	AND (room_id, start_time) NOT IN (select room_id, time FROM Reserves WHERE date= :date)" . $sizestr . $typestr;
+	// echo "SELECT room_id, start_time 
+	// FROM Reservation_times NATURAL JOIN Room
+	// WHERE weekday = '" . isWeekday($_GET['date']) . "' 
+	// AND (room_id, start_time) NOT IN (select room_id, time FROM Reserves WHERE date= :date)" . $sizestr . $typestr;
 
 	echo "<br>";
-	$previous = -1;
+	// $previous = -1;
+	$times = [];
+
 	if($stmt) {
 		$stmt->execute();
 		while($row = $stmt->fetch()){
-			if($row[0] == $previous){
-				echo "{$row[1]} ";
-				$previous = $row[0];
+			if(array_key_exists($row[0], $times)){
+				array_push($times[$row[0]], $row[1]);
 			}
-			else{
-				echo "<br>";
-				echo "{$row[0]}, {$row[1]} ";
-				$previous = $row[0];
+			else {
+				$times[$row[0]] = [$row[1]];
 			}
+			// if($row[0] == $previous){
+			// 	echo "{$row[1]} ";
+			// 	$previous = $row[0];
+			// }
+			// else{
+			// 	echo "<br>";
+			// 	echo "{$row[0]}, {$row[1]} ";
+			// 	$previous = $row[0];
+			// }
+
 		}	
 	}
+
+	foreach ($times as $room => $time_slots) {
+		echo "<ul class=\"btn-group\">{$room}";
+		foreach ($time_slots as $time) {
+			echo "<li><button type=\"button\" class=\"btn btn-outline-success\" value=\"{$time}\">{$time}</button></li>";
+		}
+		echo "</ul>";
+	}
+	// print_r($times);
 
 
 
