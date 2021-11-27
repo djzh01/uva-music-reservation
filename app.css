@@ -101,3 +101,18 @@ td label:hover {
   border-color: #ffa149;
 }
 
+.rooms {
+  height: 660px;
+  width: 100%;
+  overflow: scroll;
+}
+
+.calendarColumn {
+  float: left;
+  width: 65%;
+}
+
+.resColumn {
+  float: left;
+  width: 35%;
+}
