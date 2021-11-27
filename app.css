@@ -97,6 +97,9 @@ background-color: #ffa149;
 border-color: #ffa149;
 cursor: pointer;
 }
+.btn-outline-success:focus {
+    box-shadow: 0 0 0 .2rem #ffa149;
+}
 
 .active {
 color: #fff;
@@ -108,9 +111,18 @@ border-color: #ffa149;
 height: 660px;
 width: 100%;
 overflow: scroll;
+display: flex;
 }
 
 .resColumn {
 float: left;
 width: 35%;
+}
+
+li {
+    list-style: none;
+}
+
+ul.btn-group {
+    flex-direction: column;
 }
