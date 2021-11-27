@@ -41,13 +41,25 @@
 	// elseif ($_GET['size'] == 'nopref' && $_GET['type'] == 'nopref') {
 	// 	$stmt = $db->prepare("select room_id from Room");
 	// }
-
+	echo "<br>";
+	$previous = -1;
 	if($stmt) {
 		$stmt->execute([$_GET['date']]);
 		while($row = $stmt->fetch()){
-			echo "<p>{$row[0]}, {$row[1]}</p>";
+			if($row[0] == $previous){
+				echo "{$row[1]} ";
+				$previous = $row[0];
+			}
+			else{
+				echo "<br>";
+				echo "{$row[0]}, {$row[1]} ";
+				$previous = $row[0];
+			}
 		}	
 	}
 
+
+
+	
 
 ?>
