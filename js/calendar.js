@@ -22,6 +22,8 @@ $(function() {
     var start = new Date(d.getFullYear(), d.getMonth()).getDay();
     var cal = [];
     var day = 1;
+    var today = new Date();
+    console.log(today.getDate());
     for (var i = 0; i <= 6; i++) {
       cal.push(['<tr>']);
       for (var j = 0; j < 7; j++) {
@@ -34,7 +36,12 @@ $(function() {
             cal[i].push('<td>&nbsp;</td>');
           } else {
             dayid = d.getFullYear() + '-' + (d.getMonth()+1) + '-' + day;
-            cal[i].push('<td class="day"><label for="day' + day + '"><input type="radio" name="date" value="' + dayid + '" id="day' + day +'"/>' + day++ + '</label></td>');
+            if(day != today.getDate()){
+              cal[i].push('<td class="day"><label for="day' + day + '"><input type="radio" name="date" value="' + dayid + '" id="day' + day +'"/>' + day++ + '</label></td>');
+            }
+            else{
+              cal[i].push('<td class="day"><label class="active" for="day' + day + '"><input type="radio" name="date" checked value="' + dayid + '" id="day' + day +'"/>' + day++ + '</label></td>');
+            }
           }
         }
       }

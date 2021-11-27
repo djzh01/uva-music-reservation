@@ -9,7 +9,6 @@
 			return 1;
 		}
 	}
-	
 	$sizestr = '';
 	$typestr = '';
 
@@ -23,31 +22,50 @@
 	$stmt = $db->prepare("SELECT room_id, start_time 
 	FROM Reservation_times NATURAL JOIN Room
 	WHERE weekday = '" . isWeekday($_GET['date']) . "' 
-	AND (room_id, start_time) NOT IN (select room_id, time FROM Reserves WHERE date=?)" . $sizestr . $typestr);
+	AND (room_id, start_time) NOT IN (select room_id, time FROM Reserves WHERE date= :date)" . $sizestr . $typestr);
+	
+	$stmt->bindValue(':date', $_GET['date'], PDO::PARAM_STR);
 
-	echo "SELECT room_id, start_time 
-	FROM Reservation_times NATURAL JOIN Room
-	WHERE weekday = '" . isWeekday($_GET['date']) . "' 
-	AND (room_id, start_time) NOT IN (select room_id, time FROM Reserves WHERE date=?)" . $sizestr . $typestr;
-
-	// if($_GET['size'] == 'nopref' && $_GET['type'] != 'nopref'){
-	// 	$stmt = $db->prepare("select room_id from Room where size like ? and type = ?");
-	// 	$_GET['size'] = '%';
-	// }
-	// elseif($_GET['type'] == 'nopref' && $_GET['size'] != 'nopref'){
-	// 	$stmt = $db->prepare("select room_id from Room where size = ? and type like ?");
-	// 	$_GET['type'] = '%';
-	// }
-	// elseif ($_GET['size'] == 'nopref' && $_GET['type'] == 'nopref') {
-	// 	$stmt = $db->prepare("select room_id from Room");
-	// }
+	echo "<br>";
+	// $previous = -1;
+	$times = [];
 
 	if($stmt) {
-		$stmt->execute([$_GET['date']]);
+		$stmt->execute();
 		while($row = $stmt->fetch()){
-			echo "<p>{$row[0]}, {$row[1]}</p>";
+			if(array_key_exists($row[0], $times)){
+				array_push($times[$row[0]], $row[1]);
+			}
+			else {
+				$times[$row[0]] = [$row[1]];
+			}
+			// if($row[0] == $previous){
+			// 	echo "{$row[1]} ";
+			// 	$previous = $row[0];
+			// }
+			// else{
+			// 	echo "<br>";
+			// 	echo "{$row[0]}, {$row[1]} ";
+			// 	$previous = $row[0];
+			// }
+
 		}	
 	}
 
+	foreach ($times as $room => $time_slots) {
+		echo "<ul class=\"btn-group\">{$room}";
+		foreach ($time_slots as $time) {
+			echo "<li><label class=\"btn btn-outline-success\" for=\"time{$room}{$time}\"><input id=\"time{$room}{$time}\" type=\"radio\" class=\"btn-check\" value=\"{$time}\" name=\"times\">{$time}</label></li>";
+		}
+		echo "</ul>";
+	}
+	// print_r($times);
+
+
+
+	
+
+
+	
 
 ?>
