@@ -9,6 +9,10 @@
 			return 1;
 		}
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> highlight current day to fix filter
 	$sizestr = '';
 	$typestr = '';
 
@@ -26,10 +30,17 @@
 	
 	$stmt->bindValue(':date', $_GET['date'], PDO::PARAM_STR);
 
+<<<<<<< HEAD
 	// echo "SELECT room_id, start_time 
 	// FROM Reservation_times NATURAL JOIN Room
 	// WHERE weekday = '" . isWeekday($_GET['date']) . "' 
 	// AND (room_id, start_time) NOT IN (select room_id, time FROM Reserves WHERE date= :date)" . $sizestr . $typestr;
+=======
+	echo "SELECT room_id, start_time 
+	FROM Reservation_times NATURAL JOIN Room
+	WHERE weekday = '" . isWeekday($_GET['date']) . "' 
+	AND (room_id, start_time) NOT IN (select room_id, time FROM Reserves WHERE date= :date)" . $sizestr . $typestr;
+>>>>>>> highlight current day to fix filter
 
 	echo "<br>";
 	// $previous = -1;
