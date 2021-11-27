@@ -36,7 +36,7 @@
         $(document).ready(function () {
             $(".makeReservation").click(function () {
                 var formData = {
-                    time: $(":button").val(),
+                    time: $("input[name='times']:checked").val(),
                 };
                 console.log(formData.time);
                 $.ajax({
