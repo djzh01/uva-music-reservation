@@ -6,19 +6,22 @@
 
     $con = new mysqli('mysql01.cs.virginia.edu', 'dz8pa', 'carryiousgeorge1', 'dz8pa_roomreservation');
 
-    //$sql="INSERT IGNORE INTO User (computing_id, first_name, last_name, role)
-    //VALUES
-    //('$_POST[computingid]','$_POST[firstname]','$_POST[lastname]','$_POST[role]')";
-
    
     $result = $con->query("SELECT computing_id FROM User WHERE computing_id = '$_POST[computingid]'");
     
     if($result->num_rows == 0) {
-        echo "username not found";
+        $sql="INSERT INTO User (computing_id, first_name, last_name, role)
+        VALUES
+        ('$_POST[computingid]','$_POST[firstname]','$_POST[lastname]','$_POST[role]')";
+        $con->query($sql);
+
         header("Location: http://localhost/uva-music-reservation/login.html");
         exit;
+        //header("Location: http://localhost/uva-music-reservation/login.html");
+        //exit;
     } else {
-
+        echo "username already exists";
+    }
     //if (!mysqli_query($con,$sql))
     //{
        
@@ -27,18 +30,7 @@
 
     //echo "1 record added"; // Output to user
     //session_start();
-    session_start();
-        $id = $_POST['computingid'];
-        $_SESSION['logged']=true;
-        $_SESSION['id']=$_POST[computingid];
-        //$_SESSION['fname']=$_POST[firstname];
-        //$_SESSION['lname']=$_POST[lastname];
-        //$_SESSION['role']=$_POST[role];
-        //echo $_SESSION['id'];
-        //echo "<script type='text/javascript'> document.location = 'http://localhost/uva-music-reservation/checklogin.php'; </script>";
-        header("Location: http://localhost/uva-music-reservation/reservation.php");
-        exit;
-    }
+
     /*$computing_id = 'testid';
     $name = 'TESTname';
     $last = 'TestLast';
@@ -57,3 +49,24 @@
 
 
 ?>
+
+<!DOCTYPE html>
+
+<html>
+<body>
+
+
+        <form action="register.html" method="post">
+            
+            <input type="Submit" value = "back to register">
+            </form>
+
+            <form action="login.html" method="post">
+            
+            <input type="Submit" value = "back to login">
+            </form>
+
+
+	<br/><br/>
+</body>
+</html>
