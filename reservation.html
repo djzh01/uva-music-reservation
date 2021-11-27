@@ -20,7 +20,7 @@
                 date: $( "input[name='date']:checked" ).val(),
 
             };
-            console.log(formData.size, formData.type);
+            console.log(formData.size, formData.type, formData.date);
 			$.ajax({
 				url: 'filter.php', 
 				data: formData,
@@ -63,7 +63,7 @@
         </div>
     </div>
     <div class="col-12 col-xl-6" id="filters">
-    <div class ="row">
+    <div class ="row mb-3">
         <h3 class="col-6 text-center">Room Size</h3>
         <h3 class="col-6 text-center">Room Type</h3>
     </div>
@@ -107,7 +107,7 @@
         </div>
     </div>
     <div>
-        <h1>Rooms</h1>
+        <h1 class="text-center mt-3">Rooms</h1>
         <div id="availRooms" class="rooms"></div>
     </div>
     </div>

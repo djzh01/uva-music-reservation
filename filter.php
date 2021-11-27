@@ -9,7 +9,7 @@
 			return 1;
 		}
 	}
-	
+
 	$sizestr = '';
 	$typestr = '';
 
@@ -23,28 +23,19 @@
 	$stmt = $db->prepare("SELECT room_id, start_time 
 	FROM Reservation_times NATURAL JOIN Room
 	WHERE weekday = '" . isWeekday($_GET['date']) . "' 
-	AND (room_id, start_time) NOT IN (select room_id, time FROM Reserves WHERE date=?)" . $sizestr . $typestr);
+	AND (room_id, start_time) NOT IN (select room_id, time FROM Reserves WHERE date= :date)" . $sizestr . $typestr);
+	
+	$stmt->bindValue(':date', $_GET['date'], PDO::PARAM_STR);
 
 	echo "SELECT room_id, start_time 
 	FROM Reservation_times NATURAL JOIN Room
 	WHERE weekday = '" . isWeekday($_GET['date']) . "' 
-	AND (room_id, start_time) NOT IN (select room_id, time FROM Reserves WHERE date=?)" . $sizestr . $typestr;
+	AND (room_id, start_time) NOT IN (select room_id, time FROM Reserves WHERE date= :date)" . $sizestr . $typestr;
 
-	// if($_GET['size'] == 'nopref' && $_GET['type'] != 'nopref'){
-	// 	$stmt = $db->prepare("select room_id from Room where size like ? and type = ?");
-	// 	$_GET['size'] = '%';
-	// }
-	// elseif($_GET['type'] == 'nopref' && $_GET['size'] != 'nopref'){
-	// 	$stmt = $db->prepare("select room_id from Room where size = ? and type like ?");
-	// 	$_GET['type'] = '%';
-	// }
-	// elseif ($_GET['size'] == 'nopref' && $_GET['type'] == 'nopref') {
-	// 	$stmt = $db->prepare("select room_id from Room");
-	// }
 	echo "<br>";
 	$previous = -1;
 	if($stmt) {
-		$stmt->execute([$_GET['date']]);
+		$stmt->execute();
 		while($row = $stmt->fetch()){
 			if($row[0] == $previous){
 				echo "{$row[1]} ";
