@@ -9,11 +9,6 @@
 			return 1;
 		}
 	}
-<<<<<<< HEAD
-
-=======
-	
->>>>>>> sqlsqlsql
 	$sizestr = '';
 	$typestr = '';
 
@@ -71,6 +66,9 @@
 	}
 	// print_r($times);
 
+
+
+	
 
 
 	
