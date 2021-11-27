@@ -61,7 +61,7 @@
 	foreach ($times as $room => $time_slots) {
 		echo "<ul class=\"btn-group\">{$room}";
 		foreach ($time_slots as $time) {
-			echo "<li><button type=\"button\" class=\"btn btn-outline-success\" value=\"{$time}\">{$time}</button></li>";
+			echo "<li><label class=\"btn btn-outline-success\" for=\"time{$room}{$time}\"><input id=\"time{$room}{$time}\" type=\"radio\" class=\"btn-check\" value=\"{$time}\" name=\"times\">{$time}</label></li>";
 		}
 		echo "</ul>";
 	}

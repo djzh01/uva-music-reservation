@@ -1,8 +1,9 @@
 $(function (){
   var groups = Array.from(document.querySelectorAll('.btn-group'));
+  console.log(groups);
   groups.forEach(group => {
       var buttons = Array.from(group.getElementsByTagName('label'));
-    //   console.log(buttons);
+      console.log(buttons);
       buttons.forEach(button => {
           button.addEventListener('click', ()=>{
               buttons.forEach(sibling => {
@@ -11,7 +12,5 @@ $(function (){
               button.classList.add('active');
           });
       });
-  });
-  
-  
+  });  
 });
