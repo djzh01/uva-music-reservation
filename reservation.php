@@ -41,7 +41,6 @@
                     data: formData,
                     success: function (data) {
                         $('#availRooms').html(data);
-
                     }
                 });
             });
@@ -61,6 +60,7 @@
 
                     }
                 });
+                return false;
             });
 
         });
