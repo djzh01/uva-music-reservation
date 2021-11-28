@@ -31,30 +31,6 @@ class DbUtil{
 		
 		return $db;
 	}
-
-   public static function displayVars(){
-      echo "loginuser: " . $loginUser;
-      echo "loginpass: " . $loginPass;
-      echo "host: " . $host;
-      echo "schema: " . $schema;
-
-   }
-	
 }
-// DSN (Data Source Name) specifies the host computer for the MySQL datbase 
-// and the name of the database. If the MySQL datbase is running on the same server
-// as PHP, use the localhost keyword to specify the host computer
-
-// To connect to a MySQL database, need three arguments: 
-// - specify a DSN, username, and password
-
-// Create an instance of PDO (PHP Data Objects) which connects to a MySQL database
-// (PDO defines an interface for accessing databases)
-// Syntax: 
-//    new PDO(dsn, username, password);
-
-
-/** connect to the database **/
-
 
 ?>

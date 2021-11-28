@@ -15,7 +15,7 @@
     
     if($result->num_rows == 0) {
         echo "username not found";
-        header("Location: http://localhost/uva-music-reservation/login.html");
+        header("Location: index.php?error=Computing ID not found");
         exit;
     } else {
 
@@ -30,13 +30,13 @@
     session_start();
         $id = $_POST['computingid'];
         $_SESSION['logged']=true;
-        $_SESSION['id']=$_POST[computingid];
+        $_SESSION['id']=$_POST['computingid'];
         //$_SESSION['fname']=$_POST[firstname];
         //$_SESSION['lname']=$_POST[lastname];
         //$_SESSION['role']=$_POST[role];
         //echo $_SESSION['id'];
         //echo "<script type='text/javascript'> document.location = 'http://localhost/uva-music-reservation/checklogin.php'; </script>";
-        header("Location: http://localhost/uva-music-reservation/reservation.php");
+        header("Location: reservation.php");
         exit;
     }
     /*$computing_id = 'testid';
