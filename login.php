@@ -31,9 +31,9 @@
         $id = $_POST['computingid'];
         $_SESSION['logged']=true;
         $_SESSION['id']=$_POST['computingid'];
-        //$_SESSION['fname']=$_POST[firstname];
-        //$_SESSION['lname']=$_POST[lastname];
-        //$_SESSION['role']=$_POST[role];
+        $_SESSION['fname']=$_POST['firstname'];
+        $_SESSION['lname']=$_POST['lastname'];
+        $_SESSION['role']=$_POST['role'];
         //echo $_SESSION['id'];
         //echo "<script type='text/javascript'> document.location = 'http://localhost/uva-music-reservation/checklogin.php'; </script>";
         header("Location: reservation.php");
