@@ -6,54 +6,32 @@
 
     $con = new mysqli('mysql01.cs.virginia.edu', 'dz8pa', 'carryiousgeorge1', 'dz8pa_roomreservation');
 
-    //$sql="INSERT IGNORE INTO User (computing_id, first_name, last_name, role)
-    //VALUES
-    //('$_POST[computingid]','$_POST[firstname]','$_POST[lastname]','$_POST[role]')";
-
-   
-    $result = $con->query("SELECT computing_id FROM User WHERE computing_id = '$_POST[computingid]'");
+    $password = sha1($_POST[password]);
+    $cid = $_POST[computingid];
+    $result = $con->query("SELECT computing_id FROM User WHERE computing_id = '$cid' AND password='$password'");
+    $result2 = $con->query("SELECT computing_id FROM User WHERE computing_id = '$cid'");
     
-    if($result->num_rows == 0) {
-        echo "username not found";
-        header("Location: index.php?error=Computing ID not found");
-        exit;
-    } else {
+    if($result->num_rows == 1) {    // If username and password are both correct
 
-    //if (!mysqli_query($con,$sql))
-    //{
-       
-    //die('Error: ' . mysqli_error($con));
-    //}
-
-    //echo "1 record added"; // Output to user
-    //session_start();
-    session_start();
+        session_start();
         $id = $_POST['computingid'];
         $_SESSION['logged']=true;
         $_SESSION['id']=$_POST['computingid'];
         $_SESSION['fname']=$_POST['firstname'];
         $_SESSION['lname']=$_POST['lastname'];
         $_SESSION['role']=$_POST['role'];
-        //echo $_SESSION['id'];
-        //echo "<script type='text/javascript'> document.location = 'http://localhost/uva-music-reservation/checklogin.php'; </script>";
+        $_SESSION['password']=$_POST['password'];
+
         header("Location: reservation.php");
         exit;
+        
+    } 
+    else if ($result2->num_rows == 1) {     // If username is correct, but password is wrong
+        echo "<h2> Invalid Username or Password <h2>";
+    } else {    // If username doesn't exist in database
+        echo "username not found";
+        header("Location: index.php?error=Computing ID not found");
+        exit;
     }
-    /*$computing_id = 'testid';
-    $name = 'TESTname';
-    $last = 'TestLast';
-    $role = 'TestStudent';
-    $stmt = $db->prepare('INSERT INTO `User` (`computing_id`, `first_name`, `last_name`, `role`) VALUES (?,?,?,?)');
-
-
-    $stmt->execute(array($computing_id, $name, $last, $role));
-
-    if($stmt){
-        echo "Success";
-    }
-    else{
-        echo "Error";
-    }*/
-
 
 ?>

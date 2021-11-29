@@ -10,43 +10,23 @@
     $result = $con->query("SELECT computing_id FROM User WHERE computing_id = '$_POST[computingid]'");
     
     if($result->num_rows == 0) {
-        $sql="INSERT INTO User (computing_id, first_name, last_name, role)
+        $hashed_pass = sha1($_POST[password]);
+        $sql="INSERT INTO User (computing_id, first_name, last_name, role, password)
         VALUES
-        ('$_POST[computingid]','$_POST[firstname]','$_POST[lastname]','$_POST[role]')";
-        $con->query($sql);
+        ('$_POST[computingid]','$_POST[firstname]','$_POST[lastname]','$_POST[role]','$hashed_pass')";
+        // $con->query($sql);
 
-        header("Location: http://localhost/uva-music-reservation/login.html");
+        if (!mysqli_query($con,$sql)) {
+            die('Error: ' . mysqli_error($con));
+        }
+
+        header("Location: http://cs.virginia.edu/~ejs3an/uva-music-reservation/index.php");
         exit;
-        //header("Location: http://localhost/uva-music-reservation/login.html");
-        //exit;
+
     } else {
         echo "username already exists";
     }
-    //if (!mysqli_query($con,$sql))
-    //{
-       
-    //die('Error: ' . mysqli_error($con));
-    //}
-
-    //echo "1 record added"; // Output to user
-    //session_start();
-
-    /*$computing_id = 'testid';
-    $name = 'TESTname';
-    $last = 'TestLast';
-    $role = 'TestStudent';
-    $stmt = $db->prepare('INSERT INTO `User` (`computing_id`, `first_name`, `last_name`, `role`) VALUES (?,?,?,?)');
-
-
-    $stmt->execute(array($computing_id, $name, $last, $role));
-
-    if($stmt){
-        echo "Success";
-    }
-    else{
-        echo "Error";
-    }*/
-
+    
 
 ?>
 
