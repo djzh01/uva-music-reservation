@@ -53,14 +53,18 @@
 	}
 
 	foreach ($times as $room => $time_slots) {
-		echo "<ul class=\"btn-group\">{$room}";
+		echo "<ul>{$room}";
 		foreach ($time_slots as $time) {
-			echo "<li><label class=\"btn btn-outline-success\" for=\"time{$room}{$time}\" onclick=\"return confirm('Book room {$room} for {$time} on {$_GET['date']}?')\" ><input id=\"time{$room}{$time}\" type=\"radio\" class=\"btn-check\" value=\"{$room},{$time},{$_GET['date']}\" name=\"times\">{$time}</label></li>";
+			echo "<li><label class=\"btn btn-outline-success createRes\" for=\"time{$room}{$time}\"><input id=\"time{$room}{$time}\" type=\"radio\" class=\"btn-check\" value=\"{$room},{$time},{$_GET['date']}\" name=\"times\">{$time}</label></li>";
 		}
 		echo "</ul>";
 	}
-	// print_r($times);
 
+	echo '<script>',
+	'createactivation()',
+	  '</script>';
+	// print_r($times);
+	// onclick=\"confirmReservation()\"
 
 
 	

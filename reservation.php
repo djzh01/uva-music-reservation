@@ -1,15 +1,15 @@
-<?php 
-    
-    session_start();
-    echo $_SESSION['id'];
-    // echo "\n";
-    //echo $_SESSION['fname'];
-    // echo "\n";
-    //echo $_SESSION['lname'];
-    // echo "\n";
-    //echo $_SESSION['role'];
+<?php
 
-  ?>
+session_start();
+echo $_SESSION['id'];
+// echo "\n";
+//echo $_SESSION['fname'];
+// echo "\n";
+//echo $_SESSION['lname'];
+// echo "\n";
+//echo $_SESSION['role'];
+
+?>
 
 <!DOCTYPE html>
 
@@ -17,52 +17,58 @@
 
 <head>
     <script src="https://kit.fontawesome.com/363dc62d4f.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="app.css" rel="stylesheet">
     <script src="js/jquery-1.6.2.min.js" type="text/javascript"></script>
     <script src="js/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
     <script src="js/calendar.js"></script>
     <script src="js/buttons.js"></script>
+    <script src="js/reservebuttons.js"></script>
 
     <title>UVA Practice Room Reservation</title>
     <script>
-        $(document).ready(function () {
-            $(".roomFilter").change(function () {
-                var formData = {
-                    size: $("input[name='size']:checked").val(),
-                    type: $("input[name='type']:checked").val(),
-                    date: $("input[name='date']:checked").val(),
+        $(document).ready(function() {
+            var getTimes = function(e) {
+                
+                    var formData = {
+                        size: $("input[name='size']:checked").val(),
+                        type: $("input[name='type']:checked").val(),
+                        date: $("input[name='date']:checked").val(),
 
-                };
-                // console.log(formData.size, formData.type, formData.date);
-                $.ajax({
-                    url: 'filter.php',
-                    data: formData,
-                    success: function (data) {
-                        $('#availRooms').html(data);
-                    }
-                });
-            });
-        });
-        $(document).ready(function () {
-            $(".makeReservation").click(function () {
+                    };
+                    console.log(formData.size, formData.type, formData.date);
+                    $.ajax({
+                        url: 'filter.php',
+                        data: formData,
+                        success: function(data) {
+                            $('#availRooms').html(data);
+                        }
+                    });
+
+            }
+            $(".roomFilter").change(getTimes);
+            
+            var clickHandler = function(e) {
                 var formData = {
                     time: $("input[name='times']:checked").val(),
                 };
-                console.log(formData.time);
+                console.log('sadf', formData.time);
+
                 $.ajax({
                     url: 'makeReservation.php',
                     type: 'POST',
                     data: formData,
-                    success: function (data) {
+                    success: function(data) {
                         $('#placeholder').html(data);
 
-                    }
+                    },
                 });
-                return true;
-            });
-
+                e.stopImmediatePropagation();
+                return false;
+            };
+            // $(".makeReservation").unbind();
+            // $(".makeReservation").live('change', clickHandler);
+            $("#reserve").click(clickHandler);
         });
     </script>
 </head>
@@ -106,54 +112,47 @@
                 <div class="row">
                     <div class=" col-6 btn-group btn-group-toggle" data-toggle="buttons">
                         <label for="small" class="btn btn-outline-success">
-                            <input id="small" type="radio" class="btn-check" value="small" name="size"
-                                autocomplete="off" />
+                            <input id="small" type="radio" class="btn-check" value="small" name="size" autocomplete="off" />
                             Small
                         </label>
                         <label for="large" class="btn btn-outline-success">
-                            <input id="large" type="radio" class="btn-check" value="large" name="size"
-                                autocomplete="off" />
+                            <input id="large" type="radio" class="btn-check" value="large" name="size" autocomplete="off" />
                             Large
                         </label>
                         <label for="nosize" class="btn btn-outline-success active">
-                            <input id="nosize" type="radio" class="btn-check" value="nopref" name="size"
-                                autocomplete="off" checked aria-pressed="true" />
+                            <input id="nosize" type="radio" class="btn-check" value="nopref" name="size" autocomplete="off" checked aria-pressed="true" />
                             No Preference
                         </label>
                     </div>
                     <br>
                     <div class="col-6 btn-group btn-group-toggle" data-toggle="buttons">
                         <label for="grand" class="btn btn-outline-success">
-                            <input id="grand" type="radio" class="btn-check" value="grand" name="type"
-                                autocomplete="off" />
+                            <input id="grand" type="radio" class="btn-check" value="grand" name="type" autocomplete="off" />
                             Grand Piano
                         </label>
                         <label for="upright" class="btn btn-outline-success">
-                            <input id="upright" type="radio" class="btn-check" value="upright" name="type"
-                                autocomplete="off" />
+                            <input id="upright" type="radio" class="btn-check" value="upright" name="type" autocomplete="off" />
                             Upright Piano
                         </label>
                         <label for="Digital" class="btn btn-outline-success">
-                            <input id="Digital" type="radio" class="btn-check" value="digital grand" name="type"
-                                autocomplete="off" />
+                            <input id="Digital" type="radio" class="btn-check" value="digital grand" name="type" autocomplete="off" />
                             Digital Piano
                         </label>
                         <label for="Harp" class="btn btn-outline-success">
-                            <input id="Harp" type="radio" class="btn-check" value="harp" name="type"
-                                autocomplete="off" />
+                            <input id="Harp" type="radio" class="btn-check" value="harp" name="type" autocomplete="off" />
                             Harp
                         </label>
                         <label for="notype" class="btn btn-outline-success active">
-                            <input id="notype" type="radio" class="btn-check" value="nopref" name="type"
-                                autocomplete="off" checked aria-pressed="true" />
+                            <input id="notype" type="radio" class="btn-check" value="nopref" name="type" autocomplete="off" checked aria-pressed="true" />
                             No Preference
                         </label>
                     </div>
                 </div>
             </form>
-            <form action="makeReservation.php" method="post" class="makeReservation">
+            <form action="confirm.php" method="post" class="makeReservation">
                 <h1 class="text-center mt-3">Rooms</h1>
-                <div id="availRooms" class="rooms"></div>
+                <div id="availRooms" class="rooms btn-group"></div>
+                <button type="submit" class="btn btn-success mt-4 w-100" id="reserve" onclick="return confirm('Are you sure you would like to reserve this time?');">Reserve</button>
             </form>
             <div id="placeholder">sda</div>
         </div>

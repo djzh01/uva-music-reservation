@@ -6,8 +6,8 @@
 
     $con = new mysqli('mysql01.cs.virginia.edu', 'dz8pa', 'carryiousgeorge1', 'dz8pa_roomreservation');
 
-    $password = sha1($_POST[password]);
-    $cid = $_POST[computingid];
+    $password = sha1($_POST['password']);
+    $cid = $_POST['computingid'];
     $result = $con->query("SELECT computing_id FROM User WHERE computing_id = '$cid' AND password='$password'");
     $result2 = $con->query("SELECT computing_id FROM User WHERE computing_id = '$cid'");
     
