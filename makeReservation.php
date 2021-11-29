@@ -5,14 +5,16 @@
     $db = DbUtil::loginConnection();
 
     $vars = explode(',', $_POST['time']);
+    $con = new mysqli('mysql01.cs.virginia.edu', 'dz8pa', 'carryiousgeorge1', 'dz8pa_roomreservation');
 
-    $stmt = $db->prepare("INSERT INTO Reserves (computing_id, room_id, time, date)
+    $result = $con->query("INSERT INTO Reserves (computing_id, room_id, time, date)
                             VALUES ({$_SESSION['id']}, {$vars[0]}, {$vars[1]}, {$vars[2]});");
 
-    // echo "INSERT INTO Reserves (computing_id, room_id, time, date)
-    // VALUES ({$_SESSION['id']}, {$vars[0]}, {$vars[1]}, {$vars[2]});";
-
-    // if($stmt) {
-	// 	$stmt->execute();
-    // }
+    $sql = "INSERT INTO Reserves (computing_id, room_id, time, date)
+            VALUES ('{$_SESSION['id']}', '{$vars[0]}', '{$vars[1]}', '{$vars[2]}');";
+    if (!mysqli_query($con,$sql)) {
+        die('Error: ' . mysqli_error($con));
+    }
+    
+    mysqli_close($con);
 ?>
