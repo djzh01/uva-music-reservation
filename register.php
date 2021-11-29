@@ -20,7 +20,7 @@
             die('Error: ' . mysqli_error($con));
         }
 
-        header("Location: http://cs.virginia.edu/~ejs3an/uva-music-reservation/index.php");
+        header("Location: http://localhost/uva-music-reservation/index.php");
         exit;
 
     } else {
