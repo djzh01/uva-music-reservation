@@ -1,7 +1,6 @@
 <?php
     session_start();
     ob_start();
-	echo "IM IN";
     require('dbutil.php');
 	$db = DbUtil::loginConnection();
 
