@@ -1,4 +1,5 @@
 <?php
+    session_start();
     ob_start();
 	echo "IM IN";
     require('dbutil.php');
@@ -8,19 +9,26 @@
 
     $password = sha1($_POST['password']);
     $cid = $_POST['computingid'];
-    $result = $con->query("SELECT computing_id FROM User WHERE computing_id = '$cid' AND password='$password'");
-    $result2 = $con->query("SELECT computing_id FROM User WHERE computing_id = '$cid'");
+    $result = $con->query("SELECT * FROM User WHERE computing_id = '$cid' AND password='$password'");
+    $result2 = $con->query("SELECT * FROM User WHERE computing_id = '$cid'");
     
     if($result->num_rows == 1) {    // If username and password are both correct
 
-        session_start();
-        $id = $_POST['computingid'];
-        $_SESSION['logged']=true;
-        $_SESSION['id']=$_POST['computingid'];
-        $_SESSION['fname']=$_POST['firstname'];
-        $_SESSION['lname']=$_POST['lastname'];
-        $_SESSION['role']=$_POST['role'];
-        $_SESSION['password']=$_POST['password'];
+        
+        // $bid = $_POST['computingid'];
+        // $_SESSION['logged']=true;
+        // $_SESSION['id']=$_POST['computingid'];
+        // $_SESSION['fname']=$_POST['firstname'];
+        // $_SESSION['lname']=$_POST['lastname'];
+        // $_SESSION['role']=$_POST['role'];
+        // $_SESSION['password']=$_POST['password'];
+        while ($row=mysqli_fetch_array($result)) {
+            $_SESSION['id']=$row['computing_id'];
+            $_SESSION['password']=$row['password'];
+            $_SESSION['fname']=$row['first_name'];
+            $_SESSION['lname']=$row['last_name'];
+            $_SESSION['role']=$row['role'];
+        }
 
         header("Location: reservation.php");
         exit;

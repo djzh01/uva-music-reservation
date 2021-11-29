@@ -1,15 +1,22 @@
-<?php
+<?php 
+    session_start();
+    echo $_SESSION['id'];
+    echo $_SESSION['password'];
+    echo $_SESSION['fname'];
+    // echo "\n";
+    //echo $_SESSION['fname'];
+    // echo "\n";
+    //echo $_SESSION['lname'];
+    // echo "\n";
+    //echo $_SESSION['role'];
 
-session_start();
-echo $_SESSION['id'];
-// echo "\n";
-//echo $_SESSION['fname'];
-// echo "\n";
-//echo $_SESSION['lname'];
-// echo "\n";
-//echo $_SESSION['role'];
+    // Check if logging out
+    if (isset($_GET['logout'])) {
+        session_destroy();
+        header("Location: index.php");
+    }
 
-?>
+  ?>
 
 <!DOCTYPE html>
 
@@ -74,6 +81,24 @@ echo $_SESSION['id'];
 </head>
 
 <body>
+    <nav class="navbar fixed-top navbar-expand navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">UVA Music</a>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link" href="http://cs.virginia.edu/~ejs3an/uva-music-reservation/index.php">Home</a></li>
+                <?php if(isset($_SESSION['id'])) : ?>
+                <li class="nav-item"><a class="nav-link" href="http://cs.virginia.edu/~ejs3an/uva-music-reservation/index.php">My Reservations</a></li>
+                <li class="nav-item"><a class="nav-link" href="http://cs.virginia.edu/~ejs3an/uva-music-reservation/index.php">Profile</a></li>
+                <li class="nav-item"><a class="nav-link" href="http://cs.virginia.edu/~ejs3an/uva-music-reservation/index.php">Welcome, <?php echo $_SESSION['fname']; ?></a></li>
+                <li class="nav-item"><a class="nav-link" href="http://cs.virginia.edu/~ejs3an/uva-music-reservation/reservation.php?logout=true">Logout</a></li>
+                <?php endif;?>
+                <?php if(!isset($_SESSION['id'])) : ?>
+                <li class="nav-item active"><a class="nav-link" href="http://cs.virginia.edu/~ejs3an/uva-music-reservation/index.php">Login/Register</a></li>
+                <?php endif;?>
+            </ul>
+        </div>
+    </nav>
     <div class="row">
         <form action="filter.php" method="get" class="roomFilter col-12 col-xl-6">
             <div id="main">
