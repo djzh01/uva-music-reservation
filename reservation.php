@@ -65,10 +65,10 @@
                     url: 'makeReservation.php',
                     type: 'POST',
                     data: formData,
-                    success: function(data) {
-                        $('#placeholder').html(data);
+                    // success: function(data) {
+                    //     $('#placeholder').html(data);
 
-                    },
+                    // },
                 });
                 e.stopImmediatePropagation();
                 return false;
@@ -174,7 +174,7 @@
                     </div>
                 </div>
             </form>
-            <form action="confirm.php" method="post" class="makeReservation">
+            <form action="makeReservation.php" method="post" class="makeReservation">
                 <h1 class="text-center mt-3">Rooms</h1>
                 <div id="availRooms" class="rooms btn-group"></div>
                 <button type="submit" class="btn btn-success mt-4 w-100" id="reserve" onclick="return confirm('Are you sure you would like to reserve this time?');">Reserve</button>

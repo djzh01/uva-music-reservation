@@ -10,7 +10,7 @@
     $result = $con->query("SELECT computing_id FROM User WHERE computing_id = '$_POST[computingid]'");
     
     if($result->num_rows == 0) {
-        $hashed_pass = sha1($_POST[password]);
+        $hashed_pass = sha1($_POST['password']);
         $sql="INSERT INTO User (computing_id, first_name, last_name, role, password)
         VALUES
         ('$_POST[computingid]','$_POST[firstname]','$_POST[lastname]','$_POST[role]','$hashed_pass')";
@@ -20,7 +20,7 @@
             die('Error: ' . mysqli_error($con));
         }
 
-        header("Location: http://localhost/uva-music-reservation/index.php");
+        header("Location: index.php");
         exit;
 
     } else {
