@@ -1,12 +1,12 @@
 <?php 
     
     session_start();
-    // echo $_SESSION['id'];
-    echo "\n";
+    echo $_SESSION['id'];
+    // echo "\n";
     //echo $_SESSION['fname'];
-    echo "\n";
+    // echo "\n";
     //echo $_SESSION['lname'];
-    echo "\n";
+    // echo "\n";
     //echo $_SESSION['role'];
 
   ?>
@@ -41,7 +41,6 @@
                     data: formData,
                     success: function (data) {
                         $('#availRooms').html(data);
-
                     }
                 });
             });
@@ -61,6 +60,7 @@
 
                     }
                 });
+                return false;
             });
 
         });
