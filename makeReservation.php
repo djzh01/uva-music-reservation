@@ -1,6 +1,6 @@
 <?php
     session_start();
-
+    
     require('dbutil.php');
     $db = DbUtil::loginConnection();
 
@@ -16,6 +16,6 @@
         die('Error: ' . mysqli_error($con));
     }
     
-    header("Refresh:0; Location: reservation.php");
+    header("Refresh:0; Location: index.php");
     mysqli_close($con);
 ?>
