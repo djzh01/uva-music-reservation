@@ -53,7 +53,7 @@
 	}
 
 	foreach ($times as $room => $time_slots) {
-		echo "<ul class=\"btn-group\">{$room}";
+		echo "<ul>{$room}";
 		foreach ($time_slots as $time) {
 			echo "<li>
 
@@ -70,8 +70,12 @@
 		}
 		echo "</ul>";
 	}
-	// print_r($times);
 
+	echo '<script>',
+	'createactivation()',
+	  '</script>';
+	// print_r($times);
+	// onclick=\"confirmReservation()\"
 
 
 	
