@@ -82,7 +82,7 @@
 
 <body>
     <nav class="navbar fixed-top navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">UVA Music</a>
+        <a class="navbar-brand" href="https://music.virginia.edu/">UVA Music</a>
         
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
