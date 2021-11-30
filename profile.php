@@ -73,7 +73,7 @@ if (isset($_GET['logout'])) {
                     <?php if(isset($_SESSION['id'])) : ?>
                         <li class="nav-item"><a class="nav-link" href="">Welcome, <?php echo $_SESSION['fname']; ?></a></li>
                         <li class="nav-item"><a class="nav-link" href="reservation.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="">My Reservations</a></li>
+                    <li class="nav-item"><a class="nav-link" href="userreservations.php">My Reservations</a></li>
                     <li class="nav-item"><a class="nav-link" href="">Profile</a></li>
                     <li class="nav-item"><a class="nav-link" href="reservation.php?logout=true">Logout</a></li>
                     <?php endif;?>
@@ -88,7 +88,7 @@ if (isset($_GET['logout'])) {
                 <div class="col-md-3 border-right">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                         <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
-                        <span class="font-weight-bold"><?php echo $_SESSION['fname']; ?></span>
+                        <span class="font-weight-bold"><?php echo $_SESSION['fname']; ?> <?php echo $_SESSION['lname']; ?></span>
                         <span class="text-black-50"><?php echo $_SESSION['id']; ?>@virginia.edu</span>
                         <span> </span>
                     </div>
