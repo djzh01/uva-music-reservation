@@ -73,9 +73,30 @@
                 e.stopImmediatePropagation();
                 return false;
             };
+
+            
+            var clickHandler2 = function(e) {
+                var formData = {
+                    time: $("input[name='times']:checked").val(),
+                };
+                console.log('sadf', formData.time);
+
+                $.ajax({
+                    url: 'removeReservation.php',
+                    type: 'POST',
+                    data: formData,
+                     success: function(data) {
+                         $('#placeholder').html(data);
+
+                     },
+                });
+                e.stopImmediatePropagation();
+                return false;
+            };
             // $(".makeReservation").unbind();
             // $(".makeReservation").live('change', clickHandler);
             $("#reserve").click(clickHandler);
+            $("#remove").click(clickHandler2);
         });
     </script>
 </head>
@@ -177,7 +198,13 @@
             <form action="makeReservation.php" method="post" class="makeReservation">
                 <h1 class="text-center mt-3">Rooms</h1>
                 <div id="availRooms" class="rooms btn-group"></div>
-                <button type="submit" class="btn btn-success mt-4 w-100" id="reserve" onclick="return confirm('Are you sure you would like to reserve this time?');">Reserve</button>
+                <?php if($_SESSION['role'] == "Admin") : ?>
+                    <button type="submit" class="btn btn-success mt-4 w-100" formaction="makeReservation.php" id="reserve" onclick="return confirm('Are you sure you would like to remove this time?');">Remove Reservation</button>
+                <?php endif;?>
+                <?php if($_SESSION['role'] != "Admin") : ?>
+                    <button type="submit" class="btn btn-success mt-4 w-100" formaction="makeReservation.php" id="reserve" onclick="return confirm('Are you sure you would like to reserve this time?');">Reserve</button>
+                <?php endif;?>
+                
             </form>
             <div id="placeholder">sda</div>
         </div>
