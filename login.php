@@ -37,7 +37,7 @@
         }
         
         if($_SESSION['role'] == "Admin"){
-            header("Location: reservationAdmin.php");
+            header("Location: reservation.php");
             exit;
         }
         else{
