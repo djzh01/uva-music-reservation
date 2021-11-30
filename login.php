@@ -35,9 +35,15 @@
             $_SESSION['lname']=$row['last_name'];
             $_SESSION['role']=$row['role'];
         }
-
-        header("Location: reservation.php");
-        exit;
+        
+        if($_SESSION['role'] == "Admin"){
+            header("Location: reservationAdmin.php");
+            exit;
+        }
+        else{
+            header("Location: reservation.php");
+            exit;
+        }
         
     } 
     else if ($stmt2->rowCount() == 1) {     // If username is correct, but password is wrong
