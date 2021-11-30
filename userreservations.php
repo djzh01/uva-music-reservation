@@ -44,20 +44,21 @@ if (isset($_GET['logout'])) {
 </head>
 
 <body>
-    <nav class="navbar fixed-top navbar-expand navbar-dark bg-dark">
+<nav class="navbar fixed-top navbar-expand navbar-dark bg-dark">
         <a class="navbar-brand" href="https://music.virginia.edu/">UVA Music</a>
+        
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <?php if (isset($_SESSION['id'])) : ?>
+                <?php if(isset($_SESSION['id'])) : ?>
                     <li class="nav-item"><a class="nav-link" href="">Welcome<?php echo ', ' . $_SESSION['fname']; ?></a></li>
                     <li class="nav-item"><a class="nav-link" href="reservation.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="userreservations.php">My Reservations</a></li>
-                    <li class="nav-item"><a class="nav-link" href="">Profile</a></li>
-                    <li class="nav-item"><a class="nav-link" href="reservation.php?logout=true">Logout</a></li>
-                <?php endif; ?>
-                <?php if (!isset($_SESSION['id'])) : ?>
-                    <li class="nav-item active"><a class="nav-link" href="index.php">Login/Register</a></li>
-                <?php endif; ?>
+                <li class="nav-item"><a class="nav-link" href="userreservations.php">My Reservations</a></li>
+                <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
+                <li class="nav-item"><a class="nav-link" href="reservation.php?logout=true">Logout</a></li>
+                <?php endif;?>
+                <?php if(!isset($_SESSION['id'])) : ?>
+                <li class="nav-item active"><a class="nav-link" href="index.php">Login/Register</a></li>
+                <?php endif;?>
             </ul>
         </div>
     </nav>

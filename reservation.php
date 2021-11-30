@@ -108,10 +108,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <?php if(isset($_SESSION['id'])) : ?>
-                    <li class="nav-item"><a class="nav-link" href="">Welcome<?php echo ' ,' . $_SESSION['fname']; ?></a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Welcome<?php echo ', ' . $_SESSION['fname']; ?></a></li>
                     <li class="nav-item"><a class="nav-link" href="reservation.php">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="userreservations.php">My Reservations</a></li>
-                <li class="nav-item"><a class="nav-link" href="">Profile</a></li>
+                <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
                 <li class="nav-item"><a class="nav-link" href="reservation.php?logout=true">Logout</a></li>
                 <?php endif;?>
                 <?php if(!isset($_SESSION['id'])) : ?>
