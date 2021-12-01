@@ -101,14 +101,15 @@ if (isset($_GET['logout'])) {
                         <div class="row mt-2">
                             <div class="col-md-6">
                                 <label>First Name</label>
-                                <input type="text" class="form-control" name="fname" placeholder="first name" value="">
+                                <input type="text" class="form-control" name="fname" placeholder="first name" value="<?php echo $_SESSION['fname']; ?>">
                         </div>
-                            <div class="col-md-6"><label>Last Name</label><input type="text" name="lname" class="form-control" value="" placeholder="last name"></div>
+                            <div class="col-md-6"><label>Last Name</label><input type="text" name="lname" class="form-control" value="<?php echo $_SESSION['lname']; ?>" placeholder="last name"></div>
                         </div>
                         <div class="row mt-3">
-                            <div class="col-md-12"><label>Computing ID</label><input type="text" name="cid" class="form-control" placeholder="ejs3an" value=""></div>
-                            <div class="col-md-12"><label>Role</label><input type="text" name="role" class="form-control" placeholder="Student" value=""></div>
-                            <div class="col-md-12"><label>Password</label><input type="password" name="password" class="form-control" placeholder="Password"></div>
+                            <div class="col-md-12"><label>Computing ID</label><input type="text" name="id" class="form-control" placeholder="ejs3an" value="<?php echo $_SESSION['id']; ?>"></div>
+                            <div class="col-md-12"><label>Role</label><input type="text" name="role" class="form-control" placeholder="Student" value="<?php echo $_SESSION['role']; ?>"></div>
+                            <div class="col-md-12"><label>Current Password</label><input type="password" name="oldpass" class="form-control" placeholder="Current Password" val="null"></div>
+                            <div class="col-md-12"><label>New Password</label><input type="password" name="newpass" class="form-control" placeholder="New Password"></div>
                             <div class="col-md-12"><label>Music Classes</label><input type="text" name="classes" class="form-control" placeholder="MUPF 3140" value=""></div>
                         </div>
                     </div>
