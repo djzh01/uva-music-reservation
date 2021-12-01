@@ -38,6 +38,7 @@
                 if (!mysqli_query($con,$sql)) {
                     die('Error: ' . mysqli_error($con));
                 }
+
             } else {
                 echo "<script>alert('You entered the wrong password.')</script>";
                 echo "<a style='font-size: 100px; text-align: center; padding: 20px;'  href='profile.php'>Go back to Profile page</a>";
@@ -57,3 +58,5 @@
     }
     header("Location: profile.php");
     mysqli_close($con);
+
+?>
