@@ -27,9 +27,9 @@
     // }
 
     // For password
-    if(isset($_POST['newpass'])) {
-        $currpass = sha1($_POST['oldpass']);
-        if ($currpass != "da39a3ee5e6b4b0d3255bfef95601890afd80709") {
+    if($_POST['newpass']) {
+        if($_POST['oldpass']){
+            $currpass = sha1($_POST['oldpass']);
             $oldpassword = $_SESSION['password'];
             if ($currpass == $oldpassword) {
                 $hashed_pass = sha1($_POST['newpass']);
@@ -42,11 +42,18 @@
                 echo "<script>alert('You entered the wrong password.')</script>";
                 echo "<a style='font-size: 100px; text-align: center; padding: 20px;'  href='profile.php'>Go back to Profile page</a>";
             }
-        } else {
+        }
+        else{
             echo "<script>alert('Please enter your current password.')</script>";
             echo "<a style='font-size: 100px; text-align: center; padding: 20px;'  href='profile.php'>Go back to Profile page</a>";
         }
+        
+        // if ($currpass != "da39a3ee5e6b4b0d3255bfef95601890afd80709") {
+            
+        // } else {
+            
+        // }
         // header("Location: profile.php");
     }
+    header("Location: profile.php");
     mysqli_close($con);
-?>

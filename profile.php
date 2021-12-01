@@ -106,8 +106,8 @@ if (isset($_GET['logout'])) {
                             <div class="col-md-6"><label>Last Name</label><input type="text" name="lname" class="form-control" value="<?php echo $_SESSION['lname']; ?>" placeholder="last name"></div>
                         </div>
                         <div class="row mt-3">
-                            <div class="col-md-12"><label>Computing ID</label><input type="text" name="id" class="form-control" placeholder="ejs3an" value="<?php echo $_SESSION['id']; ?>"></div>
-                            <div class="col-md-12"><label>Role</label><input type="text" name="role" class="form-control" placeholder="Student" value="<?php echo $_SESSION['role']; ?>"></div>
+                            <div class="col-md-12"><label>Computing ID</label><input type="text" name="id" class="form-control" placeholder="ejs3an" disabled value="<?php echo $_SESSION['id']; ?>"></div>
+                            <div class="col-md-12"><label>Role</label><input type="text" name="role" class="form-control" placeholder="Student" disabled value="<?php echo $_SESSION['role']; ?>"></div>
                             <div class="col-md-12"><label>Current Password</label><input type="password" name="oldpass" class="form-control" placeholder="Current Password" val="null"></div>
                             <div class="col-md-12"><label>New Password</label><input type="password" name="newpass" class="form-control" placeholder="New Password"></div>
                             <div class="col-md-12"><label>Music Classes</label><input type="text" name="classes" class="form-control" placeholder="MUPF 3140" value=""></div>
