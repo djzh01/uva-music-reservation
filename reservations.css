@@ -1,0 +1,12 @@
+#reservations {
+    margin-top: 6rem;
+}
+#reservations li{
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+}
+input{
+    position: relative;
+    opacity: 1;
+    display: inline;
+    }

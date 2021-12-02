@@ -58,8 +58,7 @@
 			echo "<li>
 
 			<label class=\"btn btn-outline-success\" 
-				for=\"time{$room}{$time}\" 
-				onclick=\"return confirm('Book room {$room} for {$time} on {$_GET['date']}?')\" >
+				for=\"time{$room}{$time}\">
 
 			<input id=\"time{$room}{$time}\" 
 				type=\"radio\" 
