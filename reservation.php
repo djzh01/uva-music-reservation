@@ -206,7 +206,7 @@
                 <?php endif;?>
                 
             </form>
-            <div id="placeholder">sda</div>
+            <div id="placeholder"></div>
         </div>
     </div>
 </body>
