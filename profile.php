@@ -122,13 +122,17 @@ if (isset($_GET['logout'])) {
                         </div>
                         <div class="col-md-12">
                             <?php
+                                $today = date("Y-m-d");
                                 foreach($reservations as $date => $info){
-                                    echo "<ul>{$date}";
-                                    foreach ($info as $roomtime) {
-                                        echo "<li>
-                                                Room: {$roomtime[0]} <br> Time: {$roomtime[1]} </li>";
+                                    if($date > $today){
+                                        echo "<ul>{$date}";
+                                        foreach ($info as $roomtime) {
+                                            echo "<li>
+                                                    Room: {$roomtime[0]} <br> Time: {$roomtime[1]} </li>";
+                                        }
+                                        echo '</ul>';
                                     }
-                                    echo '</ul>';
+                                    
                                 }
                             ?>
                         </div>
